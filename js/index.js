@@ -26,6 +26,28 @@ $( document ).ready(function() {
         }
       };
 
+function comprobarCamposRequired(){
+    var correcto=true;
+    if(correcto==true){
+       $(':input').each(function () { //console.log($(this).val());
+        if($(this).attr("required")){
+              if($(this).val() =='' || $(this).val() === ""){   //console.log("Entró");
+                 correcto=false;
+                 var currentId = $(this).attr('id');  console.log(currentId);
+                 alert("Debe diligenciar: " +  $("#l"+currentId).text());
+                 $("#"+currentId).focus();
+                 return false;
+              }
+        }
+    
+       });
+    }
+
+    console.log(correcto);
+    
+    return correcto;
+  }
+
 
   img.cropper(options);
     //url:'http://'+localStorage.url_servidor+'/SIG/servicios/actualizar_parametros.php?id_usuario='+id_usuario,
@@ -38,7 +60,7 @@ $( document ).ready(function() {
                 for(var json in data[1].items_formulario) {      //console.log(data[1].items_formulario[json][2]);
                   var rta = data[1].items_formulario[json][2];
                   var obligatorio = "";                         //console.log(data[1].items_formulario[json][0]);
-                  if(data[1].items_formulario[json][3] == "S") {obligatorio = "required";}
+                  if(data[1].items_formulario[json][3] == "S") {obligatorio = "required";} console.log(obligatorio);
                   if (rta == "TEXTO"){
                     $("#items").append('<div id="f'+data[1].items_formulario[json][0]+'" class="form-group '+obligatorio+'"><label name="l'+data[1].items_formulario[json][0]+'" id="l'+data[1].items_formulario[json][0]+'" class="control-label">'+data[1].items_formulario[json][1]+'</label><input type="text" class="form-control" name="'+data[1].items_formulario[json][0]+'" id="'+data[1].items_formulario[json][0]+'" placeholder="'+data[1].items_formulario[json][1]+'" value=""  maxlength="255" '+obligatorio+' visible="true"/></div>');
                   }else if (rta == "PARRAFO") {
@@ -58,12 +80,10 @@ $( document ).ready(function() {
                   }
                   //CREA OBJETO DE PARAMETROS DE IMAGENES
                   imgParametros["imageData"+data[1].items_formulario[json][0]] = JSON.stringify(data[1].items_formulario[json][4]);
-                  //console.log(JSON.stringify(data[1].items_formulario[json][4]));
                   imgParametros["cropBoxData"+data[1].items_formulario[json][0]] = JSON.stringify(data[1].items_formulario[json][5]);
-//data[1].items_formulario[json][0]
                 }
                 //BOTÓN  GUARDAR
-                $("#items").append('<button type="text" class="btn btn-default">Guardar</button>');
+                $("#items").append('<button type="text" id="guardar" class="btn btn-default">Guardar</button>');
                 /* ADICIONA OPCIONES PARA LA FECHA */
                 $("input[tipo='fecha']").datepicker({
                     format: "yyyy/mm/dd",
@@ -84,8 +104,26 @@ $( document ).ready(function() {
                   img.cropper('setData', jQuery.parseJSON(imgParametros["imageData"+id]));
                   img.cropper('setCropBoxData', jQuery.parseJSON(imgParametros["cropBoxData"+id]));
                 });
-
-
+                //OPCION GUARDAR
+                $("#guardar").click(function(){
+                    if(comprobarCamposRequired()){
+                      //SELECCIONA LOS ELEMENTOS DEL FORMULARIO
+                      $(':input').each(function () {
+                          var $this = $(this),id_item = $this.attr('name');
+                          if(id_item!==undefined && id_item!=""){
+                            //LLAMA VALOR
+                            var cant_val = $(this).val();
+                            //SI ES TIPO SELECT QUITA EL ID DE OCULTAR O MOSTRAR
+                            var res = cant_val.split("@");
+                            // VALOR FINAL A GUARDAR
+                            var cant_val = res[0].trim();   console.log (id_item + " : " + cant_val + "Visible: " + $(this).attr('visible') + "Checked: " + $(this).attr('type'));
+                            if( ( $(this).attr('type') != 'checkbox' && $(this).attr('visible') == 'true' && cant_val != "") || ($(this).attr('type') == 'checkbox' && $(this).is(':checked')) ){
+                                console.log('INSERT INTO t_rtas_formulario (id_item,respuesta) values ("'+id_item+'","'+cant_val+'")');
+                            }
+                          }
+                      });
+                    }
+                });
             }else{
               console.log("No se encontró Formulario");
               //alert("No hay Actualizaciones pendientes");
