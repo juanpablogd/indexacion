@@ -1,0 +1,69 @@
+[
+{
+"encontrado": "true"
+},
+{
+"items_formulario": [
+[
+"1",
+"Entidad",
+"TEXTO",
+"S",
+{"rotate":0,"scaleX":1,"scaleY":1,"naturalWidth":728,"naturalHeight":1200,"aspectRatio":0.6066666666666667,"width":419,"height":690.6593406593406,"left":0,"top":0},
+{"left":37.89999999999998,"top":94.60000000000002,"width":241.15521978021977,"height":60.28880494505494}
+],
+[
+"2",
+"Oficina",
+"TEXTO",
+"S",
+{"rotate":0,"scaleX":1,"scaleY":1,"naturalWidth":728,"naturalHeight":1200,"aspectRatio":0.6066666666666667,"width":419,"height":690.6593406593406,"left":0,"top":0},
+{"left":221.84478021978023,"top":100.60000000000002,"width":197.15521978021977,"height":49.28880494505494}
+],
+[
+"3",
+"Nombre",
+"TEXTO",
+"S",
+{"rotate":0,"scaleX":1,"scaleY":1,"naturalWidth":728,"naturalHeight":1200,"aspectRatio":0.6066666666666667,"width":419,"height":690.6593406593406,"left":0,"top":0},
+{"left":30.844780219780233,"top":132.60000000000002,"width":167.15521978021977,"height":41.78880494505494}
+],
+[
+"4",
+"Direcci&oacute;n",
+"TEXTO",
+"S",
+{"rotate":0,"scaleX":1,"scaleY":1,"naturalWidth":728,"naturalHeight":1200,"aspectRatio":0.6066666666666667,"width":419,"height":690.6593406593406,"left":0,"top":0},
+{"left":174,"top":141,"width":118,"height":29.5}
+],
+[
+"5",
+"Tel&eacute;fono",
+"TEXTO",
+"S",
+{"rotate":0,"scaleX":1,"scaleY":1,"naturalWidth":728,"naturalHeight":1200,"aspectRatio":0.6066666666666667,"width":419,"height":690.6593406593406,"left":0,"top":0},
+{"left":271,"top":139,"width":129,"height":32.25}
+]
+]
+},
+{
+"perfil_categoria": [
+"id,categoria,descripcion,foto_calidad,foto_tamano"
+]
+},
+{
+"items_adicional": [
+"id_rta,id_item"
+]
+},
+{
+"items_filtro": [
+"id_item_padre,id_item_hijo"
+]
+},
+{
+"rtas_seleccion": [
+"id_item,descripcion,valor,vr_padre"
+]
+}
+]

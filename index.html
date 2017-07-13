@@ -5,11 +5,14 @@
 	<link  href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link  href="libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link  href="libs/cropper/cropper.css" rel="stylesheet">
+	<link  href="libs/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 	<link  href="css/index.css" rel="stylesheet">
 
 	<script src="libs/jq/jquery.js"></script><!-- jQuery is required -->
 	<script src="libs/bootstrap/js/bootstrap.min.js"></script><!-- jQuery is required -->
 	<script src="libs/cropper/cropper.js"></script>
+    <script src="libs/datepicker/js/bootstrap-datepicker.min.js"></script>				<!-- CALENDARIO -->
+    <script src="libs/datepicker/locales/bootstrap-datepicker.es.min.js"></script>	<!-- CALENDARIO -->
 	<script src="js/index.js"></script>
 </head>
 <body>
@@ -25,33 +28,7 @@
 		<div class="docs-preview clearfix">
           <div class="img-preview preview-lg"></div>
         </div>
-
-        <!-- FORMULARIO -->
-        <form>
-		  <div class="form-group">
-		    <label for="entidad">Entidad:</label>
-		    <input type="text" class="form-control" id="entidad">
-		  </div>
-		  <div class="form-group">
-		    <label for="oficina">Oficina:</label>
-		    <input type="text" class="form-control" id="oficina">
-		  </div>
-		  <div class="form-group">
-		    <label for="nombre">Nombre:</label>
-		    <input type="text" class="form-control" id="nombre">
-		  </div>
-		  <div class="form-group">
-		    <label for="direccion">Direcci&oacute;n:</label>
-		    <input type="text" class="form-control" id="direccion">
-		  </div>
-		  <div class="form-group">
-		    <label for="telefono">Tel&eacute;fono:</label>
-		    <input type="text" class="form-control" id="telefono">
-		  </div>
-		  <button type="text" class="btn btn-default">Guardar</button>
-		</form>
-		<!-- FORMULARIO -->
-
+        <!-- FORMULARIO INICIO--><div id="items"></div><br><!-- /FORMULARIO FIN-->
     </div>
   </div>
 </div>
